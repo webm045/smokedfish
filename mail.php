@@ -6,7 +6,7 @@ $mail->CharSet = 'utf-8';
 
 $name = $_POST['name'];
 $phone = $_POST['phone'];
-$email = $_POST['email'];
+$email = $_POST['mail'];
 
 //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
@@ -37,4 +37,14 @@ if(!$mail->send()) {
 } else {
     header('location: thank-you.html');
 }
+server {
+    listen 80;
+    server_name localhost;
+    location / {
+    root html;
+    index index.html index.htm;
+    }
+    error_page 405 =200 $uri;
+    # ...
+    }
 ?>
